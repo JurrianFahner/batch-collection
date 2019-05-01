@@ -13,6 +13,16 @@ List<List<String>> lists = CollectionUtils.makeBatch(words, 2);
 You can use it in your own project with jitpack.io:
 
 * add the jitpack repository to your pom/gradle file
+
+```xml
+  <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
+```
+
 * add the dependency:
 
 ```xml
