@@ -12,7 +12,7 @@ List<List<String>> lists = CollectionUtils.makeBatch(words, 2);
 
 You can use it in your own project with jitpack.io:
 
-* add the jitpack repository to your pom/gradle file
+- add the jitpack repository to your pom/gradle file
 
 ```xml
   <repositories>
@@ -23,12 +23,12 @@ You can use it in your own project with jitpack.io:
   </repositories>
 ```
 
-* add the dependency:
+- add the dependency:
 
 ```xml
 	<dependency>
 	    <groupId>com.github.JurrianFahner</groupId>
 	    <artifactId>batch-collection</artifactId>
-	    <version>1.0.0-RC1</version>
+	    <version>1.0.0-java7</version>
 	</dependency>
 ```
