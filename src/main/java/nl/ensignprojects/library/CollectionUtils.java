@@ -33,6 +33,10 @@ public class CollectionUtils {
             totalArrayList.add(tempItems);
         }
 
+        if (totalArrayList.isEmpty()) {
+            totalArrayList.add(new ArrayList<>());
+        }
+
         return totalArrayList;
     }
 
