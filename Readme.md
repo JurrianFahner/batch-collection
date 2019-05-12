@@ -10,9 +10,17 @@ List<List<String>> lists = CollectionUtils.makeBatch(words, 2);
 // [[this, is], [an, example], [collection, to], [prove, that], [it, will], [work]]
 ```
 
+## which implmentations
+
+There is a [java 7](https://github.com/JurrianFahner/batch-collection/tree/java7) implementation, in this implementation no streams are used.
+
+There is a [java 8](https://github.com/JurrianFahner/batch-collection/tree/java8) implementation, in this implementation only a stream is used.
+
+## how to use this library in your own project
+
 You can use it in your own project with jitpack.io:
 
-* add the jitpack repository to your pom/gradle file
+- add the jitpack repository to your pom/gradle file
 
 ```xml
   <repositories>
@@ -23,7 +31,7 @@ You can use it in your own project with jitpack.io:
   </repositories>
 ```
 
-* add the dependency:
+- add the dependency:
 
 ```xml
 	<dependency>
