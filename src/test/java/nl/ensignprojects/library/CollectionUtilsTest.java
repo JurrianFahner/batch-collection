@@ -88,6 +88,7 @@ class CollectionUtilsTest {
     @DisplayName("Empty collection")
     void testEmptyCollection() {
         List<List<Object>> lists = CollectionUtils.makeBatch(Collections.emptyList(), 3);
-        assertThat(lists.size()).isEqualTo(0);
+        assertThat(lists.size()).isEqualTo(1);
+        assertThat(lists.get(0).size()).isEqualTo(0);
     }
 }

@@ -2,8 +2,10 @@ package nl.ensignprojects.library;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class CollectionUtils {
 
@@ -14,26 +16,31 @@ public class CollectionUtils {
      * @param <T> it maintains the input type to output type
      * @return nested list
      */
-    public static <T> List<List<T>> makeBatch(Collection<T> collection, int batchsize) {
+    public static <T> List<List<T>> makeBatch(Collection<T> collection, int batchSize) {
+        return makeBatch(collection.stream(), batchSize);
+    }
 
-        List<List<T>> totalArrayList = new ArrayList<>();
-        List<T> tempItems = new ArrayList<>();
+    public static <T> List<List<T>> makeBatch(Stream<T> stream, int batchSize) {
 
-        Iterator<T> iterator = collection.iterator();
+        Supplier<List<List<T>>> supplier = () -> {
+            List<List<T>> lists = new ArrayList<>();
+            lists.add(new ArrayList<>());
+            return lists;
+        };
 
-        for (int i = 0; i < collection.size(); i++) {
-            tempItems.add(iterator.next());
-            if ((i+1) % batchsize == 0) {
-                totalArrayList.add(tempItems);
-                tempItems = new ArrayList<>();
+        BiConsumer<List<List<T>>, T> accumulator = (List<List<T>> a, T b) -> {
+            if (a.get(a.size() - 1).size() < batchSize) {
+                a.get(a.size() - 1).add(b);
+            } else {
+                ArrayList<T> ts = new ArrayList<>();
+                ts.add(b);
+                a.add(ts);
             }
-        }
+        };
 
-        if (tempItems.size() > 0) {
-            totalArrayList.add(tempItems);
-        }
 
-        return totalArrayList;
+        return stream.collect(supplier, accumulator, List::addAll);
+
     }
 
 }
