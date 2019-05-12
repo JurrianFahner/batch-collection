@@ -29,6 +29,6 @@ You can use it in your own project with jitpack.io:
 	<dependency>
 	    <groupId>com.github.JurrianFahner</groupId>
 	    <artifactId>batch-collection</artifactId>
-	    <version>1.0.0-RC1</version>
+	    <version>1.0.0-java8</version>
 	</dependency>
 ```
